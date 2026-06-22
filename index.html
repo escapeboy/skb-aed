@@ -207,11 +207,11 @@
   .legend .swatch img{width:16px; height:16px; border-radius:50%; background:#fff}
   /* donated marker: green pin + small СКБ logo badge */
   .aed-mark .badge{
-    position:absolute; top:-3px; right:-4px; width:17px; height:17px; border-radius:50%;
-    background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.4); overflow:hidden;
+    position:absolute; top:-5px; right:-7px; width:21px; height:21px; border-radius:50%;
+    background:#fff; border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.5); overflow:hidden; z-index:2;
   }
   .aed-mark .badge img{width:100%; height:100%; display:block}
-  .aed-mark.donor{position:relative}
+  .aed-mark.donor{position:relative; z-index:1000}
 
   /* СКБ donor accents in cards + popup */
   .donor-tag,.donor-line{display:inline-flex; align-items:center; gap:5px; font-weight:700; color:var(--brand-d)}
@@ -527,7 +527,8 @@
         var c = f.geometry.coordinates, pr = f.properties;
         var p = {name:pr.name, city:pr.city||"", address:pr.address||"",
                  access:pr.access||"", hours:pr.hours||"", donor:pr.donor||"", lat:c[1], lng:c[0]};
-        p.marker = L.marker([p.lat,p.lng], {icon:(p.donor==="skb"?ICON_DONOR:ICON), title:p.name})
+        p.marker = L.marker([p.lat,p.lng], {icon:(p.donor==="skb"?ICON_DONOR:ICON), title:p.name,
+                 zIndexOffset:(p.donor==="skb"?1000:0)})
           .addTo(map).bindPopup(popupHtml(p), {autoPan:false});
         p.marker.on("click", function(){ points.forEach(function(q){ q.li && q.li.classList.toggle("active", q===p); }); });
         points.push(p); bounds.push([p.lat,p.lng]);
