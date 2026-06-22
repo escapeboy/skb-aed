@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Как да помогна при сърдечен арест — първа помощ и AED · България</title>
+<meta name="description" content="Спокойни, ясни стъпки за първа помощ при внезапен сърдечен арест: разпознаване, гръдни компресии, употреба на дефибрилатор (AED) и възстановително положение. По насоките на ERC 2025. При спешност звъни 112.">
+<link rel="canonical" href="https://aed.karlovo.net/pomosht">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#d6201f">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="AED България">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AED България">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:title" content="Как да помогна при сърдечен арест — първа помощ и AED">
+<meta property="og:description" content="Стъпка по стъпка: разпознаване, гръдни компресии, дефибрилатор (AED), възстановително положение. По ERC 2025. При спешност звъни 112.">
+<meta property="og:url" content="https://aed.karlovo.net/pomosht">
+<meta property="og:image" content="https://aed.karlovo.net/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --aed:#008a3e; --aed-d:#006e31;
+    /* СКБ бранд — извлечен от логото (зелено #009344, червено #ed1c24).
+       Зеленото е за обвивката; червеното остава запазено за 112. */
+    --brand:#009344; --brand-d:#00712f; --brand-red:#ed1c24;
+    --ink:#14201a; --muted:#5b6b62;
+    --surface:#fff; --bg:#f3f6f3; --line:#e3e8e4;
+    --emergency:#d6201f; --emergency-d:#b01716;
+    --focus:#1a73e8;
+    --r:12px; --shadow:0 1px 3px rgba(20,32,26,.12),0 6px 16px rgba(20,32,26,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink); background:var(--bg);
+    -webkit-text-size-adjust:100%; line-height:1.5;
+  }
+  a{color:var(--aed-d)}
+
+  /* Emergency bar — the one place red is allowed */
+  .er{
+    display:flex; align-items:center; gap:10px;
+    background:var(--emergency); color:#fff;
+    padding:max(10px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) 10px max(14px,env(safe-area-inset-left));
+    text-decoration:none; font-weight:700; letter-spacing:.2px;
+  }
+  .er:hover{background:var(--emergency-d)}
+  .er svg{flex:0 0 auto}
+  .er b{font-size:1.05rem}
+  .er span{font-weight:500; opacity:.92; font-size:.85rem}
+  .er .arrow{margin-left:auto; font-size:1.1rem}
+
+  header{
+    padding:12px 14px 11px; background:var(--brand); color:#fff; border-bottom:3px solid var(--brand-d);
+    display:flex; align-items:flex-start; gap:12px;
+  }
+  header .brand{flex:0 0 auto; display:block; line-height:0}
+  header .brand img{width:48px; height:48px; border-radius:50%; background:#fff; padding:2px; box-shadow:0 1px 4px rgba(0,0,0,.28)}
+  header .h-text{flex:1; min-width:0}
+  header h1{margin:0; font-size:1.18rem; line-height:1.25; font-weight:700; color:#fff}
+  header p{margin:3px 0 0; color:rgba(255,255,255,.88); font-size:.85rem}
+  .back{display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:.85rem; font-weight:700; text-decoration:underline; text-underline-offset:2px; color:#fff}
+  .back:hover{text-decoration:none}
+
+  /* Section chip nav */
+  nav.toc{
+    position:sticky; top:0; z-index:5; background:var(--surface); border-bottom:1px solid var(--line);
+    display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:9px 14px;
+  }
+  nav.toc a{
+    flex:0 0 auto; text-decoration:none; color:var(--ink); background:var(--bg);
+    border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:.82rem; font-weight:600;
+  }
+  nav.toc a:hover{background:#eef7f1; border-color:var(--brand)}
+
+  main{max-width:760px; margin:0 auto; padding:14px 14px 40px}
+
+  /* Critical lead callout — 112 is the only red accent */
+  .lead{
+    background:var(--surface); border:1px solid var(--line); border-left:5px solid var(--emergency);
+    border-radius:var(--r); padding:14px 16px; box-shadow:var(--shadow); margin:6px 0 18px;
+  }
+  .lead h2{margin:0 0 6px; font-size:1.02rem}
+  .lead p{margin:6px 0 0}
+  .tel112{
+    display:inline-flex; align-items:center; gap:8px; margin-top:12px;
+    background:var(--emergency); color:#fff; text-decoration:none; font-weight:700;
+    padding:11px 16px; border-radius:10px; font-size:1.02rem;
+  }
+  .tel112:hover{background:var(--emergency-d)}
+
+  section{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+    box-shadow:var(--shadow); padding:16px; margin:14px 0; scroll-margin-top:64px;
+  }
+  section h2{margin:0 0 10px; font-size:1.08rem; display:flex; align-items:center; gap:9px}
+  section h3{margin:16px 0 6px; font-size:.96rem}
+  .num{
+    flex:0 0 auto; width:26px; height:26px; border-radius:50%; background:var(--aed); color:#fff;
+    display:grid; place-items:center; font-size:.85rem; font-weight:700;
+  }
+  ol.steps{margin:0; padding:0; list-style:none; counter-reset:s}
+  ol.steps>li{
+    position:relative; padding:12px 12px 12px 50px; margin:8px 0; counter-increment:s;
+    border:1px solid var(--line); border-radius:10px; background:var(--bg);
+  }
+  ol.steps>li::before{
+    content:counter(s); position:absolute; left:12px; top:12px;
+    width:28px; height:28px; border-radius:50%; background:var(--aed); color:#fff;
+    display:grid; place-items:center; font-weight:700; font-size:.92rem;
+  }
+  ol.steps>li b{display:block; margin-bottom:2px}
+  .key{color:var(--aed-d); font-weight:700}
+  .warn{color:var(--emergency-d); font-weight:700}
+  ul.tight{margin:8px 0 0; padding-left:20px}
+  ul.tight li{margin:4px 0}
+
+  /* Diagrams */
+  figure.diagram{margin:14px 0; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#fff}
+  figure.diagram svg, figure.diagram img{display:block; width:100%; height:auto; background:#fbfdfb}
+  figure.diagram figcaption{padding:9px 12px; font-size:.85rem; color:var(--muted); border-top:1px solid var(--line)}
+  .credit{display:block; margin-top:5px; font-size:.78rem; color:var(--muted)}
+  .svg-tm{fill:#5b6b62; font:500 12px system-ui,sans-serif}
+  .svg-box{fill:#fff; stroke:#008a3e; stroke-width:2; rx:9}
+  .svg-box-t{fill:#14201a; font:600 13px system-ui,sans-serif}
+  .svg-arrow{fill:none; stroke:#008a3e; stroke-width:2.4}
+  /* Child-specific note callout */
+  .baby-note{background:#eef7f1; border:1px solid #cfe7d8; border-left:5px solid var(--aed); border-radius:10px; padding:10px 14px; margin:12px 0}
+  .baby-note b{color:var(--aed-d)}
+  section h3 .tag{font-size:.72rem; font-weight:700; color:#fff; background:var(--aed); border-radius:6px; padding:2px 7px; margin-left:6px; vertical-align:middle}
+
+  /* Compare grid (infarct vs arrest, facts) */
+  .cmp{display:grid; gap:10px; margin-top:6px}
+  @media (min-width:620px){ .cmp.two{grid-template-columns:1fr 1fr} }
+  .cmp .box{border:1px solid var(--line); border-radius:10px; padding:12px; background:var(--bg)}
+  .cmp .box h3{margin:0 0 6px}
+  .myth{border-left:4px solid var(--line); padding:8px 0 8px 12px; margin:10px 0}
+  .myth b{display:block}
+  .chain li{margin:8px 0}
+
+  .map-cta{
+    display:flex; align-items:center; justify-content:center; gap:10px; margin-top:8px;
+    background:var(--aed); color:#fff; text-decoration:none; font-weight:700;
+    padding:14px 16px; border-radius:var(--r);
+  }
+  .map-cta:hover{background:var(--aed-d)}
+
+  .disclaimer{font-size:.85rem; color:var(--muted); margin-top:18px}
+  footer.src{
+    max-width:760px; margin:0 auto; padding:0 14px 40px; color:var(--muted); font-size:.82rem;
+  }
+  footer.src h2{font-size:.92rem; color:var(--ink); margin:0 0 6px}
+  footer.src a{color:var(--aed-d)}
+
+  /* Branded site footer (СКБ) */
+  footer.site{
+    background:var(--brand-d); color:#fff;
+    padding:16px max(14px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px 14px; font-size:.85rem;
+  }
+  footer.site img{width:44px; height:44px; border-radius:50%; background:#fff; padding:2px; flex:0 0 auto}
+  footer.site .f-txt{flex:1 1 200px; min-width:0}
+  footer.site .slogan{font-weight:700; font-style:italic}
+  footer.site .f-links{display:flex; gap:8px 16px; flex-wrap:wrap; margin-top:5px}
+  footer.site a{color:#fff; text-decoration:underline; text-underline-offset:2px; font-weight:600}
+  footer.site a:hover{text-decoration:none}
+  footer.site .copy{opacity:.85; font-size:.8rem; flex:0 0 auto}
+
+  :focus-visible{outline:3px solid var(--focus); outline-offset:2px; border-radius:6px}
+
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto !important}}
+
+  /* Print — readable B/W sheet to pin next to a defibrillator */
+  @media print{
+    :root{--shadow:none}
+    body{background:#fff; color:#000; font-size:11.5pt}
+    .er{background:#000 !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    header{background:#fff !important; color:#000 !important; border-bottom:1px solid #000}
+    header h1, header p{color:#000}
+    header .brand{display:none}
+    footer.site{display:none !important}
+    nav.toc, .back, .map-cta, .tel112{display:none !important}
+    main{max-width:none; padding:0 6mm}
+    section{break-inside:avoid; border:1px solid #999; box-shadow:none; margin:6px 0; padding:10px}
+    figure.diagram{break-inside:avoid; border:1px solid #999}
+    .lead{border:1px solid #000; border-left:5px solid #000}
+    a{color:#000; text-decoration:none}
+    section h2, .lead h2{color:#000}
+    .num, ol.steps>li::before{background:#000 !important; color:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact}
+    .key,.warn{color:#000}
+    footer.src{padding:6px 6mm}
+    .print-url::after{content:" (" attr(href) ")"; font-size:9pt; color:#000}
+  }
+</style>
+</head>
+<body>
+
+<a class="er" href="tel:112" aria-label="Обади се на спешния телефон 112">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M6.6 10.8a15 15 0 006.6 6.6l2.2-2.2a1 1 0 011-.24 11.4 11.4 0 003.6.58 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.58 3.6a1 1 0 01-.24 1l-2.24 2.2z" fill="currentColor"/>
+  </svg>
+  <span style="display:flex;flex-direction:column;line-height:1.1">
+    <b>Спешен телефон 112</b>
+    <span>Натисни при сърдечен арест</span>
+  </span>
+  <span class="arrow" aria-hidden="true">›</span>
+</a>
+
+<header>
+  <a class="brand" href="https://spasitelen.club" target="_blank" rel="noopener" aria-label="Спасителен клуб за Бъдеще — към сайта">
+    <img src="assets/skb-logo.png" width="48" height="48" alt="Спасителен клуб за Бъдеще">
+  </a>
+  <div class="h-text">
+    <h1>Как да помогна при сърдечен арест</h1>
+    <p>Първа помощ и употреба на дефибрилатор (AED). Спокойно, стъпка по стъпка.</p>
+    <a class="back" href="/">← Карта на дефибрилаторите</a>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Съдържание">
+  <a href="#razpoznavane">Разпознаване</a>
+  <a href="#stapki">Стъпки 1→8</a>
+  <a href="#kompresii">Компресии</a>
+  <a href="#aed">AED</a>
+  <a href="#vazstanovitelno">Възстановително</a>
+  <a href="#zadavyane">Задавяне</a>
+  <a href="#deca">Деца и бебета</a>
+  <a href="#veriga">Верига</a>
+  <a href="#mitove">Митове</a>
+</nav>
+
+<main>
+
+  <div class="lead">
+    <h2>При съмнение — действай</h2>
+    <p>Ако човек се свлече, не реагира и не диша нормално — <span class="warn">приеми, че е сърдечен арест</span>. Звънни 112 и започни гръдни компресии. <b>Бездействието е по-лошо от несигурно действие</b> — рискът да навредиш на човек, който не е в арест, е малък.</p>
+    <a class="tel112" href="tel:112">📞 Звънни 112 сега</a>
+  </div>
+
+  <!-- 1. RECOGNITION -->
+  <section id="razpoznavane">
+    <h2><span class="num" aria-hidden="true">!</span> Разпознаване</h2>
+    <p>Внезапният сърдечен арест настъпва, когато сърцето спре да изпомпва кръв. Признаци:</p>
+    <ul class="tight">
+      <li><b>Внезапен колапс</b> — човекът се свлича.</li>
+      <li><b>Не реагира</b> — не отговаря на глас и разтърсване.</li>
+      <li><b>Не диша нормално</b> — липса на дишане или само редки, шумни, „хъркащи" вдишвания (т.нар. <span class="key">агонално дишане</span>). Това НЕ е нормално дишане — то е знак за арест.</li>
+      <li>В първите секунди може да има кратки гърчови движения. Щом спрат — провери дишането.</li>
+    </ul>
+    <p class="warn">Тези хъркащи вдишвания често се бъркат с „диша". При съмнение — действай като при арест.</p>
+
+    <h3>Инфаркт ≠ сърдечен арест</h3>
+    <div class="cmp two">
+      <div class="box">
+        <h3>Инфаркт</h3>
+        <p>Запушен кръвоносен съд. Човекът обикновено е <b>в съзнание</b>: болка/стягане в гърдите, задух, изпотяване, болка към ръката/челюстта. Сърцето още бие.</p>
+        <p class="key">→ Звънни 112, успокой го, нека седне/полулегне. Инфарктът може да премине в арест — остани до него.</p>
+      </div>
+      <div class="box">
+        <h3>Сърдечен арест</h3>
+        <p>Сърцето спира. Човекът <b>губи съзнание</b>, не реагира и не диша нормално.</p>
+        <p class="warn">→ СЛР (компресии) + AED веднага. Това е описаното на тази страница.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. STEPS -->
+  <section id="stapki">
+    <h2><span class="num" aria-hidden="true">⛑</span> Какво да правя — стъпка по стъпка</h2>
+    <ol class="steps">
+      <li><b>Безопасност</b> Огледай мястото. Има ли опасност (трафик, ток, вода)? Помогни само ако е безопасно за теб.</li>
+      <li><b>Провери за реакция</b> Разтърси леко раменете и викай: „Чувате ли ме?". Няма реакция → продължи.</li>
+      <li><b>Викай за помощ и звънни 112</b> Веднага щом човекът не реагира. Включи <span class="key">високоговорителя</span> и поискай <span class="key">дефибрилатор (AED)</span>. Не чакай да си сигурен за дишането, преди да се обадиш.</li>
+      <li><b>Провери дишането</b> Докато чакаш да вдигнат: отметни главата назад, повдигни брадичката; гледай, слушай и усещай дишането <span class="key">до 10 секунди</span>. Липса на нормално дишане или само редки хъркащи вдишвания = арест. Операторът на 112 ще ти помогне да прецениш.</li>
+      <li><b>Гръдни компресии — веднага</b> Център на гръдния кош, дълбочина <span class="key">5–6 см</span>, честота <span class="key">100–120/мин</span>, пълно отпускане между натисканията. <a href="#kompresii">Виж как →</a></li>
+      <li><b>Обдишване (по избор)</b> Ако си обучен и желаеш: <span class="key">30 компресии : 2 обдишвания</span>. Ако не — само компресии, без прекъсване. И двете спасяват.</li>
+      <li><b>AED веднага щом пристигне</b> Включи го и следвай гласовите указания. <a href="#aed">Виж как →</a></li>
+      <li><b>Не спирай</b> Продължавай до екип на спешна помощ или явни признаци на живот (събуждане, движение, нормално дишане).</li>
+    </ol>
+
+    <figure class="diagram">
+      <svg viewBox="0 0 360 430" role="img" aria-label="Блок-схема на основните животоспасяващи действия">
+        <defs>
+          <marker id="ah" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto">
+            <path d="M1 1L7 5L1 9" class="svg-arrow"/>
+          </marker>
+        </defs>
+        <g>
+          <rect x="70" y="14"  width="220" height="46" rx="9" class="svg-box"/>
+          <text x="180" y="33" text-anchor="middle" class="svg-box-t">Безопасно? Не реагира?</text>
+          <text x="180" y="50" text-anchor="middle" class="svg-tm">разтърси рамене, викай</text>
+
+          <rect x="70" y="86" width="220" height="46" rx="9" class="svg-box"/>
+          <text x="180" y="105" text-anchor="middle" class="svg-box-t">Звънни 112 (на спикър)</text>
+          <text x="180" y="122" text-anchor="middle" class="svg-tm">поискай AED</text>
+
+          <rect x="70" y="158" width="220" height="46" rx="9" class="svg-box"/>
+          <text x="180" y="177" text-anchor="middle" class="svg-box-t">Не диша нормално?</text>
+          <text x="180" y="194" text-anchor="middle" class="svg-tm">или само хъркащи вдишвания</text>
+
+          <rect x="70" y="230" width="220" height="56" rx="9" class="svg-box"/>
+          <text x="180" y="252" text-anchor="middle" class="svg-box-t">Гръдни компресии</text>
+          <text x="180" y="270" text-anchor="middle" class="svg-tm">100–120/мин · 5–6 см · 30:2</text>
+
+          <rect x="70" y="312" width="220" height="46" rx="9" class="svg-box"/>
+          <text x="180" y="331" text-anchor="middle" class="svg-box-t">AED веднага щом дойде</text>
+          <text x="180" y="348" text-anchor="middle" class="svg-tm">следвай гласа на уреда</text>
+
+          <rect x="70" y="384" width="220" height="34" rx="9" class="svg-box"/>
+          <text x="180" y="405" text-anchor="middle" class="svg-box-t">Не спирай до екип / живот</text>
+
+          <path d="M180 60 L180 86" class="svg-arrow" marker-end="url(#ah)"/>
+          <path d="M180 132 L180 158" class="svg-arrow" marker-end="url(#ah)"/>
+          <path d="M180 204 L180 230" class="svg-arrow" marker-end="url(#ah)"/>
+          <path d="M180 286 L180 312" class="svg-arrow" marker-end="url(#ah)"/>
+          <path d="M180 358 L180 384" class="svg-arrow" marker-end="url(#ah)"/>
+        </g>
+      </svg>
+      <figcaption>Опростена блок-схема на основните животоспасяващи стъпки (BLS) за възрастен.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 3. COMPRESSIONS -->
+  <section id="kompresii">
+    <h2><span class="num" aria-hidden="true">♥</span> Гръдни компресии</h2>
+    <ul class="tight">
+      <li>Коленичи отстрани на човека, легнал по гръб върху твърда повърхност.</li>
+      <li>Постави <b>петата на едната длан в центъра на гръдния кош</b> (долната половина на гръдната кост).</li>
+      <li>Сложи другата длан отгоре и <b>преплети пръстите</b> — натискай с дланта, не върху ребрата.</li>
+      <li>Дръж ръцете <b>изправени</b>, рамене точно над гръдния кош.</li>
+      <li>Натискай надолу <span class="key">5–6 см</span> и оставяй гръдния кош да се <b>върне напълно</b> след всяко натискане (не се облягай).</li>
+      <li>Темпо <span class="key">100–120 в минута</span> — ритъмът на „Staying Alive" на Bee Gees.</li>
+      <li><span class="warn">Не спирай.</span> Прекъсванията спират кръвотока. Ако се умориш, сменяй се с друг на всеки ~2 минути.</li>
+    </ul>
+
+    <figure class="diagram">
+      <img src="/img/compression.jpg" width="960" height="668" loading="lazy"
+           alt="Ръце една върху друга в центъра на гръдния кош; сърцето се притиска между гръдната кост и гръбнака при компресия.">
+      <figcaption>Петата на едната длан в центъра на гръдния кош (долна половина на гръдната кост), другата длан отгоре с преплетени пръсти. Натиск право надолу 5–6 см. <span class="credit">Илюстрация: OpenStax, <i>Anatomy &amp; Physiology</i> · CC BY 3.0</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- 4. AED -->
+  <section id="aed">
+    <h2><span class="num" aria-hidden="true">⚡</span> Употреба на AED</h2>
+    <p><b>Всеки може да ползва AED — не е нужно обучение.</b> Уредът <span class="key">сам анализира</span> сърдечния ритъм и подава разряд <span class="key">само ако е необходимо</span>. При нормален ритъм НЕ подава разряд — безопасен е за лаици.</p>
+    <ul class="tight">
+      <li><b>Включи го</b> веднага щом пристигне (някои се пускат при отваряне на капака).</li>
+      <li><b>Следвай гласовите/визуалните указания</b> — уредът те води стъпка по стъпка.</li>
+      <li><b>Залепи пластините на гол, сух гръден кош</b>, както е показано на самите тях:
+        <ul class="tight">
+          <li>едната — под <b>дясната ключица</b> (вдясно от гръдната кост);</li>
+          <li>другата — <b>отстрани под лявата мишница</b>.</li>
+        </ul>
+      </li>
+      <li>Мокър гръден кош — избърши го. Силно окосмен — махни космите (обръсни или ги издърпай с лепяща лента от комплекта), без да губиш време.</li>
+      <li>Ако сте повече хора — <b>продължавайте компресиите</b>, докато се лепят пластините.</li>
+      <li><span class="warn">Никой да не докосва човека</span> при анализ и при разряд — кажи силно „Отдръпни се!".</li>
+      <li>Полуавтоматичен уред: натисни мигащия бутон за разряд. Напълно автоматичен: подава сам.</li>
+      <li><b>Веднага след разряда продължи компресиите</b> — не чакай. Следвай уреда до идването на екип.</li>
+    </ul>
+
+    <figure class="diagram">
+      <img src="/img/aed-pads.png" width="960" height="480" loading="lazy"
+           alt="AED с две лепящи пластини: едната горе вдясно на гръдния кош под ключицата, другата долу вляво отстрани.">
+      <figcaption>Разположение на лепящите пластини: едната под дясната ключица, другата отстрани под лявата мишница — както е показано и на самите пластини. <span class="credit">Илюстрация: BruceBlaus · CC BY-SA 4.0</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- 5. RECOVERY POSITION -->
+  <section id="vazstanovitelno">
+    <h2><span class="num" aria-hidden="true">☾</span> Възстановително положение</h2>
+    <p><b>Само ако човекът не реагира, но <span class="key">диша нормално</span></b> (не е в арест). Положението държи дихателните пътища отворени.</p>
+    <ul class="tight">
+      <li>Коленичи отстрани. Близката до теб ръка постави под прав ъгъл нагоре, длан нагоре.</li>
+      <li>Далечната ръка прекарай през гърдите, опакото на дланта до бузата.</li>
+      <li>Свий далечното коляно, хвани го и <b>претърколи човека към теб</b> настрани.</li>
+      <li>Наклони главата леко назад, устата надолу — за да изтичат течности (слюнка, повръщано). Ръката под бузата държи главата.</li>
+      <li><span class="warn">Наблюдавай дишането.</span> Спре ли да диша нормално → обърни по гръб и започни компресии.</li>
+      <li>Обърни на другата страна след около 30 минути.</li>
+    </ul>
+
+    <figure class="diagram">
+      <img src="/img/recovery.jpg" width="960" height="402" loading="lazy"
+           alt="Човек, легнал на една страна: главата на ръката с лек наклон назад, горното коляно свито напред за стабилност.">
+      <figcaption>На една страна, глава леко назад и устата надолу, горното коляно свито напред за стабилност. Следи дишането непрекъснато. <span class="credit">Илюстрация: U.S. Army (обществено достояние)</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- 5b. CHOKING -->
+  <section id="zadavyane">
+    <h2><span class="num" aria-hidden="true">!</span> Задавяне (запушени дихателни пътища)</h2>
+    <p>Заподозри задавяне, ако човек внезапно не може да говори, диша или кашля — често по време на хранене. Много хора <b>се хващат за гърлото</b> (универсалният знак).</p>
+
+    <div class="cmp two">
+      <div class="box">
+        <h3>Леко задавяне</h3>
+        <p>Кашля ефективно, може да говори/диша.</p>
+        <p class="key">→ Насърчи да кашля. Не удряй, не бъркай в устата. Наблюдавай.</p>
+      </div>
+      <div class="box">
+        <h3>Тежко задавяне</h3>
+        <p>Кашлицата е неефективна или липсва, не може да говори/диша, посинява.</p>
+        <p class="warn">→ Действай веднага (по-долу). Викай за помощ, звънни 112.</p>
+      </div>
+    </div>
+
+    <h3>Възрастен и дете над 1 година <span class="tag">в съзнание</span></h3>
+    <p>Редувай, докато се изчисти или човекът изгуби съзнание:</p>
+    <ol class="steps">
+      <li><b>5 удара между лопатките</b> Наведи го напред. С основата на дланта удари силно 5 пъти между лопатките.</li>
+      <li><b>5 коремни тласъка (Хаймлих)</b> Застани отзад, ръце около горната част на корема — между пъпа и долния край на гръдната кост. Стисни юмрук, хвани го с другата ръка и дръпни рязко навътре и нагоре, 5 пъти.</li>
+      <li><b>Редувай 5 и 5</b> Удари между лопатките ↔ коремни тласъци, докато предметът излезе.</li>
+    </ol>
+
+    <figure class="diagram">
+      <img src="/img/choke-backblows.jpg" width="960" height="911" loading="lazy"
+           alt="Спасител навежда задавения човек напред и нанася удар между лопатките с основата на дланта.">
+      <figcaption>Наведи напред и нанеси до 5 удара между лопатките с основата на дланта. <span class="credit">Илюстрация: Trakotako · CC BY-SA 4.0</span></figcaption>
+    </figure>
+    <figure class="diagram">
+      <img src="/img/choke-heimlich.jpg" width="960" height="506" loading="lazy"
+           alt="Коремни тласъци (Хаймлих) отзад: юмрук между пъпа и края на гръдната кост, рязко навътре и нагоре.">
+      <figcaption>Коремни тласъци (Хаймлих): юмрук между пъпа и долния край на гръдната кост, дръпни рязко навътре и нагоре. <span class="credit">Илюстрация: U.S. Army (обществено достояние)</span></figcaption>
+    </figure>
+
+    <div class="baby-note">
+      <p style="margin:0"><b>Бебе под 1 година — БЕЗ коремни тласъци!</b> Коремните тласъци могат да наранят вътрешните органи на бебето. Използвай удари по гръбчето и гръдни тласъци.</p>
+    </div>
+
+    <h3>Бебе под 1 година <span class="tag">в съзнание</span></h3>
+    <ol class="steps">
+      <li><b>5 удара по гръбчето</b> Постави бебето по лице надолу върху предмишницата си, опряна на бедрото. Главата по-ниско от тялото; придържай главата и челюстта. Нанеси 5 удара с основата на дланта между лопатките.</li>
+      <li><b>5 гръдни тласъка</b> Обърни бебето по гръб. С <b>двата палеца</b>, обхващайки гръдния кош (както при компресии), натисни рязко 5 пъти в центъра на гръдния кош.</li>
+      <li><b>Редувай 5 и 5</b> До изчистване или загуба на съзнание.</li>
+    </ol>
+
+    <p><span class="warn">Ако човекът (или бебето) изгуби съзнание</span> — спусни го внимателно на земята, <b>звънни 112</b> и започни <a href="#stapki">СЛР</a> (при дете/бебе — както в секция „Деца и бебета", с 5 начални обдишвания).</p>
+  </section>
+
+  <!-- 5c. PAEDIATRIC -->
+  <section id="deca">
+    <h2><span class="num" aria-hidden="true">♥</span> Реанимация при деца и бебета</h2>
+    <p>При децата сърдечният арест по-често започва от <b>проблем с дишането</b>, не от сърцето. Затова <b>обдишването е важно</b> и започваш с него.</p>
+    <div class="baby-note">
+      <p style="margin:0"><b>Започни с 5 НАЧАЛНИ обдишвания</b>, после премини към компресии. (При възрастен се започва направо с компресии.)</p>
+    </div>
+
+    <h3>Дете (1 година – пубертет)</h3>
+    <ul class="tight">
+      <li>Отвори дихателните пътища, дай <b>5 начални обдишвания</b>.</li>
+      <li>После компресии в центъра на гръдния кош: <span class="key">15:2</span> ако си обучен; <span class="key">30:2</span> или само компресии — ако не си.</li>
+      <li>Дълбочина <span class="key">⅓ от гръдния кош (~5 см)</span>, честота <span class="key">100–120/мин</span>, пълно отпускане. Според големината — <b>една или две ръце</b>.</li>
+    </ul>
+
+    <h3>Бебе под 1 година</h3>
+    <ul class="tight">
+      <li><b>5 начални обдишвания</b> (покрий устата и носа на бебето), после компресии.</li>
+      <li>Техника: <span class="key">двата палеца</span>, обхващащи гръдния кош, в центъра му. Дълбочина <span class="key">⅓ (~4 см)</span>, <span class="key">100–120/мин</span>, съотношение <span class="key">15:2</span> (обучен) или 30:2.</li>
+    </ul>
+    <div class="baby-note">
+      <p style="margin:0"><b>Промяна 2025:</b> при бебе компресиите вече се правят с <b>техниката на двата палеца</b> (обхващащи гръдния кош) — за всички спасители, не само при двама. Старите „два пръста" вече не са основният метод.</p>
+    </div>
+
+    <h3>Ако си сам</h3>
+    <ul class="tight">
+      <li>С телефон: <b>звънни 112 веднага на високоговорител</b> и започни СЛР — <span class="warn">не оставяй детето</span>. Операторът на 112 ще те води.</li>
+      <li>Само ако нямаш телефон и трябва да отидеш за помощ: направи <span class="key">1 минута СЛР</span>, чак тогава тръгни да викаш помощ.</li>
+    </ul>
+
+    <h3>AED при деца</h3>
+    <ul class="tight">
+      <li>Под ~8 г. / 25 кг — използвай <b>детски пластини</b> (или детски режим, който намалява силата на разряда), ако уредът има.</li>
+      <li><b>Ако няма детски — използвай стандартния AED за възрастни. Не отказвай разряда</b> — той спасява живот.</li>
+      <li>На малък гръден кош пластините не бива да се допират → постави ги <b>предно-задно</b>: едната по средата на гърдите, другата на гърба между лопатките.</li>
+    </ul>
+
+  </section>
+
+  <!-- 6. CHAIN OF SURVIVAL -->
+  <section id="veriga">
+    <h2><span class="num" aria-hidden="true">⛓</span> Верига на оцеляването</h2>
+    <p>Шансът за живот зависи от бързината по цялата верига — тя е силна колкото най-слабото си звено:</p>
+    <ol class="chain">
+      <li><b>Ранно разпознаване и сигнал</b> — разпознай ареста и звънни 112 веднага.</li>
+      <li><b>Ранна СЛР</b> — компресии от свидетел печелят минути до идването на екип.</li>
+      <li><b>Ранна дефибрилация (разряд с AED)</b> — AED възстановява нормалния ритъм; всяка минута забавяне сваля шанса.</li>
+      <li><b>Грижи след реанимация</b> — болнично лечение и възстановяване.</li>
+    </ol>
+  </section>
+
+  <!-- 7. FACTS / MYTHS -->
+  <section id="mitove">
+    <h2><span class="num" aria-hidden="true">✓</span> Кратки факти и митове</h2>
+    <div class="myth"><b>Мит: „По-добре да не пипам, за да не навредя."</b> СЛР от свидетел увеличава многократно шанса за оцеляване. Рискът да навредиш на човек, който не е в арест, е малък. Бездействието е по-лошо.</div>
+    <div class="myth"><b>Мит: „Без обучение не пипай дефибрилатора."</b> Всеки може да ползва AED — уредът говори и те води, а подава разряд само при нужда.</div>
+    <div class="myth"><b>Мит: „Без обдишване не става."</b> Само гръдни компресии са достатъчни и препоръчани за необучени. Не спирай натискането.</div>
+    <div class="myth"><b>Мит: „Ще счупя ребро."</b> Възможно е и е приемлива цена — счупено ребро зараства, спрялото сърце без помощ — не.</div>
+  </section>
+
+  <a class="map-cta" href="/?near=1">📍 Намери най-близкия дефибрилатор</a>
+
+  <p class="disclaimer">Тази страница е <b>образователна</b> и не замества сертифициран курс по първа помощ. Запиши се на обучение към Български Червен кръст. При реална спешност винаги звъни <b>112</b>.</p>
+
+</main>
+
+<footer class="src">
+  <h2>Източници и версия</h2>
+  <p>Протоколът следва <b>Насоките на Европейския съвет по ресусцитация (ERC) 2025 — Основни животоспасяващи действия при възрастни (Adult Basic Life Support)</b>, публикувани в Resuscitation 2025;215 (октомври 2025). Това е действащата версия (замества ERC 2021).</p>
+  <p>Обучение по първа помощ в България: <b>Български Червен кръст</b> — <a class="print-url" href="https://firstaid.redcross.bg" target="_blank" rel="noopener">firstaid.redcross.bg</a>.</p>
+  <p>Препратки: <a class="print-url" href="https://www.erc.edu/science-research/guidelines/guidelines-2025" target="_blank" rel="noopener">ERC Guidelines 2025</a> · <a class="print-url" href="https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/adult-basic-life-support-guidelines" target="_blank" rel="noopener">Adult BLS (Resuscitation Council UK, ERC-съгласувани)</a>.</p>
+  <p><b>Изображения</b> (свободни лицензи, без промени по техниката): компресии — OpenStax, <i>Anatomy &amp; Physiology</i>, <a class="print-url" href="https://commons.wikimedia.org/wiki/File:2002_CPR_Technique.jpg" target="_blank" rel="noopener">CC BY 3.0</a>; AED пластини — BruceBlaus, <a class="print-url" href="https://commons.wikimedia.org/wiki/File:Automated_External_Defibrillator.png" target="_blank" rel="noopener">CC BY-SA 4.0</a>; възстановително положение — U.S. Army, обществено достояние, <a class="print-url" href="https://commons.wikimedia.org/wiki/File:Coma_Position.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>; удари по гръбчето — Trakotako, <a class="print-url" href="https://commons.wikimedia.org/wiki/File:Back_blows_(back_slaps)_against_choking_for_adult_people.jpg" target="_blank" rel="noopener">CC BY-SA 4.0</a>; коремни тласъци (Хаймлих) — U.S. Army, обществено достояние, <a class="print-url" href="https://commons.wikimedia.org/wiki/File:Abdominal_thrusts_against_choking.jpg" target="_blank" rel="noopener">Wikimedia Commons</a>. Блок-схемата на BLS е собствена.</p>
+  <p>Сверено на 22.06.2026.</p>
+</footer>
+
+<footer class="site">
+  <img src="assets/skb-logo.png" width="44" height="44" alt="Спасителен клуб за Бъдеще">
+  <div class="f-txt">
+    <span class="slogan">„Вярваме, че заедно можем повече"</span>
+    <div class="f-links">
+      <a href="https://spasitelen.club" target="_blank" rel="noopener">spasitelen.club</a>
+      <a href="https://www.facebook.com/profile.php?id=61550562526461" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <span class="copy">© Спасителен клуб за Бъдеще</span>
+</footer>
+
+<script>
+  // Register the shared service worker so this page works offline even when opened directly
+  if("serviceWorker" in navigator){
+    window.addEventListener("load", function(){
+      navigator.serviceWorker.register("/sw.js").catch(function(){});
+    });
+  }
+</script>
+
+</body>
+</html>

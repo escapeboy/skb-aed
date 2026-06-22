@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#008a3e"/>
+  <rect width="1200" height="14" fill="#d6201f"/>
+  <g transform="translate(-66 -27) scale(18)">
+    <path d="M17 25.5l-5.6-5.3c-1.9-1.8-1.9-4.7 0-6.5 1.7-1.6 4.4-1.4 6 .3 1.6-1.7 4.3-1.9 6-.3 1.9 1.8 1.9 4.7 0 6.5L17 25.5z" fill="#fff"/>
+  </g>
+  <g fill="#fff" font-family="Helvetica, Arial, sans-serif">
+    <text x="430" y="270" font-size="66" font-weight="700">Дефибрилатори (AED)</text>
+    <text x="432" y="345" font-size="44" font-weight="400" opacity=".95">Карта · Община Карлово</text>
+    <text x="432" y="430" font-size="34" font-weight="700">При спешност звъни 112</text>
+  </g>
+</svg>

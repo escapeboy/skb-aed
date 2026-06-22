@@ -1,0 +1,78 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.8071473, 42.6374718] },
+      "properties": {
+        "name": "Обреден дом",
+        "city": "Карлово",
+        "address": "ул. „Александър Стамболийски“ 34",
+        "access": "",
+        "hours": "",
+        "checked": "2026-06-22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.8005815, 42.6413908] },
+      "properties": {
+        "name": "Автогара Карлово",
+        "city": "Карлово",
+        "address": "ул. „Роза“ 1",
+        "access": "",
+        "hours": "Пон–Пет 06:00–20:00 · Съб–Нед 07:00–18:00",
+        "checked": "2026-06-22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.8063333, 42.6432426] },
+      "properties": {
+        "name": "Ресторант Карлово",
+        "city": "Карлово",
+        "address": "пл. „20-ти юли“",
+        "access": "",
+        "hours": "Пон–Чет 11:00–23:00 · Пет–Съб 11:00–00:00 · Нед 11:00–23:00",
+        "checked": "2026-06-22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.7997946, 42.6335177] },
+      "properties": {
+        "name": "Ритейл парк Карлово",
+        "city": "Карлово",
+        "address": "ул. „Ген. Заимов“ 32",
+        "access": "",
+        "hours": "",
+        "checked": "2026-06-22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.7578748, 42.6528457] },
+      "properties": {
+        "name": "Община Сопот",
+        "city": "Сопот",
+        "address": "бул. „Иван Вазов“ 34",
+        "access": "",
+        "hours": "Пон–Пет 08:00–17:00",
+        "checked": "2026-06-22"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [24.8147948, 42.6361875] },
+      "properties": {
+        "name": "ПГ по ЖПТ „Христо Смирненски“",
+        "city": "Карлово",
+        "address": "ул. „Яне Сандански“ 1",
+        "access": "",
+        "hours": "Пон–Пет 08:00–17:00 (учебни дни)",
+        "donor": "skb",
+        "checked": "2026-06-22"
+      }
+    }
+  ]
+}
