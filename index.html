@@ -205,12 +205,7 @@
   .legend .row+.row{margin-top:5px}
   .legend .swatch{flex:0 0 auto; width:18px; height:18px; display:grid; place-items:center}
   .legend .swatch img{width:16px; height:16px; border-radius:50%; background:#fff}
-  /* donated marker: green pin + small СКБ logo badge */
-  .aed-mark .badge{
-    position:absolute; top:-5px; right:-7px; width:21px; height:21px; border-radius:50%;
-    background:#fff; border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.5); overflow:hidden; z-index:2;
-  }
-  .aed-mark .badge img{width:100%; height:100%; display:block}
+  /* donated marker: green AED pin with the СКБ logo in the centre (instead of the heart) */
   .aed-mark.donor{position:relative; z-index:1000}
 
   /* СКБ donor accents in cards + popup */
@@ -221,7 +216,6 @@
   .donor-tag img,.donor-line img{border-radius:50%; flex:0 0 auto}
   .leaflet-popup-content .donor-line{margin:6px 0 2px; font-size:.84rem}
   .card .pin{position:relative}
-  .card .pin .pin-badge{position:absolute; top:-4px; right:-5px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.4)}
   #iosHint{
     display:none; background:#fff; color:var(--ink); border-bottom:1px solid var(--line);
     font-size:.84rem; padding:9px 14px; gap:8px; align-items:center; line-height:1.3;
@@ -381,20 +375,27 @@
   var SKB_DONOR_TEXT = "Дарен от Спасителен клуб за Бъдеще";
 
   // Green AED pin with white heart — the international AED green stays unchanged
-  var PIN_SVG = '<svg width="34" height="42" viewBox="0 0 34 42" xmlns="http://www.w3.org/2000/svg">'
-      +'<path d="M17 1C8.7 1 2 7.6 2 15.7 2 26 17 41 17 41s15-15 15-25.3C32 7.6 25.3 1 17 1z" fill="#008a3e" stroke="#fff" stroke-width="2"/>'
-      +'<path d="M17 25.5l-5.6-5.3c-1.9-1.8-1.9-4.7 0-6.5 1.7-1.6 4.4-1.4 6 .3l-.4 0 .4 0c1.6-1.7 4.3-1.9 6-.3 1.9 1.8 1.9 4.7 0 6.5L17 25.5z" fill="#fff"/>'
-      +'</svg>';
+  var PIN_TEARDROP = '<path d="M17 1C8.7 1 2 7.6 2 15.7 2 26 17 41 17 41s15-15 15-25.3C32 7.6 25.3 1 17 1z" fill="#008a3e" stroke="#fff" stroke-width="2"/>';
+  var PIN_HEART = '<path d="M17 25.5l-5.6-5.3c-1.9-1.8-1.9-4.7 0-6.5 1.7-1.6 4.4-1.4 6 .3l-.4 0 .4 0c1.6-1.7 4.3-1.9 6-.3 1.9 1.8 1.9 4.7 0 6.5L17 25.5z" fill="#fff"/>';
+  // СКБ logo embedded INSIDE the svg (after the path) so it always paints above the pin —
+  // an HTML overlay loses to Leaflet's svg z-index. Clipped to a circle = clean disc.
+  var PIN_SKB = '<circle cx="17" cy="15" r="9" fill="#fff"/>'
+      +'<clipPath id="skbclip"><circle cx="17" cy="15" r="8"/></clipPath>'
+      +'<image clip-path="url(#skbclip)" x="9" y="7" width="16" height="16" xlink:href="assets/skb-logo.png" href="assets/skb-logo.png"/>';
+  function pinSvg(inner){
+    return '<svg width="34" height="42" viewBox="0 0 34 42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">'
+      + PIN_TEARDROP + inner + '</svg>';
+  }
 
   var ICON = L.divIcon({
     className:"aed-mark", iconSize:[34,42], iconAnchor:[17,42], popupAnchor:[0,-38],
-    html:PIN_SVG
+    html:pinSvg(PIN_HEART)
   });
 
-  // СКБ-donated: same green pin (recognisable) + a small СКБ logo badge on top
+  // СКБ-donated: green AED pin (recognisable) with the СКБ logo in the centre instead of the heart
   var ICON_DONOR = L.divIcon({
     className:"aed-mark donor", iconSize:[34,42], iconAnchor:[17,42], popupAnchor:[0,-38],
-    html:PIN_SVG + '<span class="badge"><img src="assets/skb-logo.png" width="16" height="16" alt=""></span>'
+    html:pinSvg(PIN_SKB)
   });
 
   var listEl = document.getElementById("list");
@@ -443,9 +444,11 @@
       meta += '<br><span class="donor-tag"><img src="assets/skb-logo.png" width="14" height="14" alt="">'
         + '<a href="'+SKB_URL+'" target="_blank" rel="noopener">'+SKB_DONOR_TEXT+'</a></span>';
     }
+    var heart = '<path d="M17 25.5l-5.6-5.3c-1.9-1.8-1.9-4.7 0-6.5 1.7-1.6 4.4-1.4 6 .3 1.6-1.7 4.3-1.9 6-.3 1.9 1.8 1.9 4.7 0 6.5L17 25.5z" fill="#fff"/>';
+    var skb = '<circle cx="17" cy="15" r="9" fill="#fff"/><clipPath id="skbclipc"><circle cx="17" cy="15" r="8"/></clipPath>'
+      +'<image clip-path="url(#skbclipc)" x="9" y="7" width="16" height="16" xlink:href="assets/skb-logo.png" href="assets/skb-logo.png"/>';
     var pin = '<span class="pin'+(p.donor==="skb"?" donorpin":"")+'">'
-      +'<svg width="18" height="22" viewBox="0 0 34 42"><path d="M17 1C8.7 1 2 7.6 2 15.7 2 26 17 41 17 41s15-15 15-25.3C32 7.6 25.3 1 17 1z" fill="#008a3e"/><path d="M17 25.5l-5.6-5.3c-1.9-1.8-1.9-4.7 0-6.5 1.7-1.6 4.4-1.4 6 .3 1.6-1.7 4.3-1.9 6-.3 1.9 1.8 1.9 4.7 0 6.5L17 25.5z" fill="#fff"/></svg>'
-      +(p.donor==="skb"?'<img class="pin-badge" src="assets/skb-logo.png" width="13" height="13" alt="">':'')
+      +'<svg width="18" height="22" viewBox="0 0 34 42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M17 1C8.7 1 2 7.6 2 15.7 2 26 17 41 17 41s15-15 15-25.3C32 7.6 25.3 1 17 1z" fill="#008a3e"/>'+(p.donor==="skb"?skb:heart)+'</svg>'
       +'</span>';
     return ''
       +'<div class="card-top">'
